@@ -56,3 +56,12 @@ jobs:
           push: true
           tags: solids4foam/solids4foam-v2.0-foam-extend-4.1:v2.0
           file: Dockerfile.foamextend41
+  apptainer-foamextend41:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: eWaterCycle/setup-apptainer@v2
+        with:
+          apptainer-version: 1.1.2
+      - name: Run an apptainer container
+        run: apptainer build solids4foam-v2.0-foam-extend-4.1.sif docker://solids4foam/solids4foam-v2.0-foam-extend-4.1:v2.0
